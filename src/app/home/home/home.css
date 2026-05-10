@@ -1,0 +1,69 @@
+/*
+  El gradiente debe ocupar el alto que deja el layout entre header y footer.
+  Antes .home-page usaba min-height: 100% pero el :host medía solo el contenido, el % no aplicaba
+  y se veía una franja blanca (fondo de <main>) encima del footer.
+*/
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.home-page {
+  flex: 1 1 auto;
+  width: 100%;
+  background: linear-gradient(160deg, #f8fafc 0%, #eef2ff 45%, #f8fafc 100%);
+}
+
+.home-hero {
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.75rem 1.25rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0.5rem 1.5rem rgba(15, 23, 42, 0.06);
+}
+
+.home-hero-lead {
+  max-width: 36rem;
+  font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+  .home-hero {
+    padding: 2rem 2rem;
+  }
+
+  .home-hero-lead {
+    font-size: 1.1rem;
+  }
+}
+
+.home-card {
+  border-radius: 0.75rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.75rem 2rem rgba(15, 23, 42, 0.1) !important;
+}
+
+.home-card-accent {
+  background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
+}
+
+.home-card .card-text {
+  line-height: 1.65;
+  font-size: 0.95rem;
+}
+
+.home-card code {
+  font-size: 0.88em;
+  padding: 0.15em 0.35em;
+  border-radius: 0.25rem;
+  background: #e9ecef;
+  color: #495057;
+}

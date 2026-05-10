@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.footer-app {
+  background-color: var(--app-footer-bg, #dee2e6);
+  color: #495057;
+}
+
+.footer-app .badge {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}

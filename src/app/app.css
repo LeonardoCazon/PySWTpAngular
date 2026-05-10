@@ -1,0 +1,21 @@
+/* Mismo gris que el footer: el área bajo el pie y los costados del “main” se leen como una sola base */
+.app-layout {
+  background-color: var(--app-footer-bg, #dee2e6);
+}
+
+.app-main {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding-bottom: 1.5rem;
+  min-height: 0;
+}
+
+/* Capa estática del shell; reglas del componente de ruta dinámico van en styles.css (sin encapsular) */
+.app-route-view {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+}

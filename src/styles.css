@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Gris continuo debajo del footer (viewport corto o fin del documento); mismo tono que el pie */
+:root {
+  --app-footer-bg: #dee2e6;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background-color: var(--app-footer-bg);
+}
+
+app-root {
+  display: block;
+  min-height: 100%;
+}
+
+/*
+  El router inserta el componente activo fuera del template encapsulado de App.
+  Estas reglas van aquí para que el host (app-home, app-punto4, etc.) reciba flex y
+  llene el alto del main; evita la franja blanca que solo se notaba en Home por el gradiente.
+*/
+.app-route-view:has(> router-outlet + *) > router-outlet {
+  flex: 0 0 auto;
+}
+
+.app-route-view:has(> router-outlet + *) > :not(router-outlet) {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-route-view:not(:has(> router-outlet + *)) > router-outlet {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-route-view:not(:has(> router-outlet + *)) > router-outlet > * {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
