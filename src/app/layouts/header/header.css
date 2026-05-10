@@ -1,0 +1,25 @@
+:host {
+  display: block;
+}
+
+.app-header .navbar-brand {
+  letter-spacing: -0.02em;
+}
+
+.app-header .nav-link {
+  border-radius: 0.375rem;
+  font-weight: 500;
+  color: #495057;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.app-header .nav-link:hover {
+  color: var(--bs-primary);
+  background-color: rgba(var(--bs-primary-rgb), 0.06);
+}
+
+.app-header .nav-link.active {
+  color: var(--bs-primary);
+  font-weight: 600;
+  background-color: rgba(var(--bs-primary-rgb), 0.1);
+}

@@ -1,0 +1,112 @@
+<div class="container mt-4">
+    <div class="text-end mb-3">
+
+    </div>
+    <h2 class="text-center mb-4">
+        Productos Destacados
+    </h2>
+
+    <div class="row">
+
+        <div class="text-end mb-3">
+
+            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalCarrito">
+                🛒 Ver Carrito
+            </button>
+
+        </div>
+
+        <div class="col-md-4 mb-4" *ngFor="let producto of productos; let i = index">
+            <div class="card h-100 shadow">
+
+                <img [src]="producto.img" class="card-img-top" style="height: 250px; object-fit: cover;">
+
+
+                <div class="card-body">
+
+                    <h5 class="card-title">
+                        {{ producto.nombre }}
+                    </h5>
+
+                    <p class="card-text">
+                        {{ producto.descripcion }}
+                    </p>
+
+                    <h4 class="text-primary">
+                        $ {{ producto.precio }}
+                    </h4>
+
+                    <button class="btn w-100" [ngClass]="ultimoAgregado === i ? 'btn-success btn-pop' : 'btn-outline-success'"
+                        (click)="agregarCarrito(producto, i)">
+                        {{ ultimoAgregado === i ? 'Agregado ✓' : 'Agregar al carrito' }}
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal fade" id="modalCarrito" tabindex="-1">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    Carrito de Compras
+                </h5>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <p *ngIf="carrito.length === 0" class="text-muted mb-0">
+                    El carrito está vacío.
+                </p>
+
+                <div *ngFor="let linea of carrito" class="cart-line">
+
+                    <img [src]="linea.producto.img" [alt]="linea.producto.nombre" class="cart-line__img">
+
+                    <div class="cart-line__info">
+                        <strong class="cart-line__title">{{ linea.producto.nombre }}</strong>
+                        <span class="cart-line__unit">${{ linea.producto.precio }} c/u</span>
+                    </div>
+
+                    <div class="cart-line__qty" role="group" [attr.aria-label]="'Cantidad de ' + linea.producto.nombre">
+                        <button type="button" class="btn btn-sm btn-outline-secondary cart-line__btn"
+                            (click)="decrementarCantidad(linea)" title="Quitar uno">
+                            −
+                        </button>
+                        <span class="cart-line__count">{{ linea.cantidad }}</span>
+                        <button type="button" class="btn btn-sm btn-outline-secondary cart-line__btn"
+                            (click)="incrementarCantidad(linea)" title="Agregar uno">
+                            +
+                        </button>
+                    </div>
+
+                    <div class="cart-line__subtotal">
+                        ${{ subtotalLinea(linea) | number:'1.2-2' }}
+                    </div>
+
+                </div>
+
+                <hr *ngIf="carrito.length > 0">
+
+                <h4 *ngIf="carrito.length > 0">
+                    Total: ${{ calcularTotal() | number:'1.2-2' }}
+                </h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

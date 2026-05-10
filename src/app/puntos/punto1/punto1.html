@@ -1,0 +1,55 @@
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-7">
+            <div class="card border-0 shadow-sm punto1-card overflow-hidden">
+
+                <div class="position-relative ratio ratio-16x9 bg-body-secondary">
+
+                    <img [src]="eventos[indice].img"
+                        class="object-fit-cover w-100 h-100"
+                        [attr.alt]="eventos[indice].nombre" />
+
+                    <div class="overlay-content position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-between">
+
+                        <div class="card-body text-center pb-2 pt-4 px-4 text-white">
+                            <p class="small mb-2 mb-md-3 fw-medium text-light">
+                                {{ indice + 1 }} / {{ eventos.length }}
+                            </p>
+
+                            <h2 class="h4 fw-semibold mb-0 text-white">
+                                {{ eventos[indice].nombre }}
+                            </h2>
+                        </div>
+
+                        <div class="card-body text-center px-4 pb-4 pt-3 text-white">
+                            <p class="mb-4 text-light">
+                                {{ eventos[indice].descripcion }}
+                            </p>
+
+                            <div class="d-flex gap-2 justify-content-between">
+                                <button type="button"
+                                    class="btn btn-outline-light flex-fill"
+                                    (click)="anterior()"
+                                    [disabled]="indice === 0">
+
+                                    Anterior
+                                </button>
+
+                                <button type="button"
+                                    class="btn btn-primary flex-fill"
+                                    (click)="siguiente()"
+                                    [disabled]="indice === eventos.length - 1">
+
+                                    Siguiente
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

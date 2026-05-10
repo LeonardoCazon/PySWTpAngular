@@ -1,0 +1,73 @@
+<div class="container mt-4">
+
+    <h2 class="text-center mb-4">
+        Juego de Memoria
+    </h2>
+
+    <div class="d-flex justify-content-center gap-3 mb-4">
+
+        <button
+            class="btn btn-success"
+            (click)="iniciarJuego()">
+            INICIAR
+        </button>
+
+        <button
+            class="btn btn-warning"
+            (click)="habilitarIntento()">
+            INTENTAR
+        </button>
+
+        <button
+            class="btn btn-danger"
+            (click)="reiniciarJuego()">
+            REINICIAR
+        </button>
+
+    </div>
+
+    <h4 class="text-center">
+        Intentos: {{ intentos }}
+    </h4>
+
+    <h3 class="text-center text-primary">
+        {{ mensaje }}
+    </h3>
+
+    <div class="row justify-content-center">
+
+        <div
+            class="col-3 mb-3"
+            *ngFor="let carta of cartas">
+
+            <div
+                class="card carta border-0 bg-transparent shadow-none"
+                (click)="seleccionarCarta(carta)">
+
+                <div
+                    class="flip-inner"
+                    [class.is-flipped]="carta.descubierta">
+
+                    <div class="flip-face rounded overflow-hidden">
+                        <img
+                            [src]="imagenTapada"
+                            class="card-img-top imagenCarta"
+                            alt="">
+                    </div>
+
+                    <div class="flip-face flip-back rounded overflow-hidden">
+                        <img
+                            [src]="carta.imagen"
+                            class="card-img-top imagenCarta"
+                            alt="">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
